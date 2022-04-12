@@ -59,6 +59,13 @@
             <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp">
             <div id="phoneHelp" class="form-text">We'll never share your number with anyone else.</div>
         </div>
+        <div class="input-group mb-3">
+            <label for="avatar">Upload Image (Optional)</label>
+            <input type="file" class="custom-file-input" id="avatar" name="avatar">
+            <label for="custom-file-label">Choose File</label>
+        </div>
+
+
         <div class="d-grid gap-2">
             <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
         </div>

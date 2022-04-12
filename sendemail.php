@@ -4,29 +4,32 @@
     // use PHPMailer\PHPMailer\SMTP;
     // use PHPMailer\PHPMailer\Exception;
 
-    //     require 'vendor/autoload.php';
+        require 'vendor/autoload.php';
 
-    //     class SendEmail{
+        class SendEmail{
 
-            // public static function sendMail($to,$subject,$content){
-            //     //This is where you input the API Key(if commented out no API key yet)
-            //     // $key = ;
-            //     $email = new \SendGrid\Mail\Mail();
-            //     $email->setFrom("archiehababag23@gmail.com", "It Conference Admin");
-            //     $email->setSubject($subject);
-            //     $email->addTo($to);
-            //     email->addContent("text/plain", $content);
-            //     // email->addContent("text/html", $content);
+            public static function sendMail($to,$subject,$content){
 
-            //     $sendGrid = new \SendGrid($key);
-            //     try{
-            //         $response = $sendgrid->send($email);
-            //         return $response;
-            //     }catch(Exception $e){
-            //         echo 'Email Exception Caught : ' . $e->getMessage() . "\n";
-            //         return false;
-            //     }
-            // }
+                //This is where you input the API Key(if commented out no API key yet)
+                $key = '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';
+
+                $email = new \SendGrid\Mail\Mail();
+                $email->setFrom("archiehababag23@gmail.com", "It Conference Admin");
+                $email->setSubject($subject);
+                $email->addTo($to);
+                $email->addContent("text/plain", $content);
+                // email->addContent("text/html", $content);
+
+                $sendGrid = new \SendGrid($key);
+                
+                try{
+                    $response = $sendGrid->send($email);
+                    return $response;
+                }catch(Exception $e){
+                    echo 'Email Exception Caught : ' . $e->getMessage() . "\n";
+                    return false;
+                }
+            }
 
         
 
@@ -39,7 +42,7 @@
     //             $mail->Host       = 'smtp.google.com';                     //Set the SMTP server to send through
     //             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     //             $mail->Username   = 'archiehababagdev@google.com';                     //SMTP username
-    //             $mail->Password   = 'ArchieDev23';                               //SMTP password
+    //             $mail->Password   = '';                               //SMTP password
     //             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
     //             $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
@@ -61,7 +64,7 @@
 
 
 
-    //     }
+        }
     
     
-    // ?>
+    ?>

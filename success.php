@@ -19,12 +19,12 @@
         $specialtyName = $crud->getSpecialtyById($specialty);
 
         if ($isSuccess) {
-            // SendEmail::sendMail($email, 'Welcome to IT Conference 2022', 'You have successfully registered for this year\'s IT Conference');
-            // echo '<h1 class="text-center text-success">You Have Been Registered!</h1>';
+            SendEmail::sendMail($email, 'Welcome to IT Conference 2022', 'You have successfully registered for this year\'s IT Conference');
+            echo '<h1 class="text-center text-success">You Have Been Registered!</h1>';
             include 'includes/successmessage.php';
         } else {
 
-            // echo '<h1 class="text-center text-danger">There was an error Processing!</h1>';
+            echo '<h1 class="text-center text-danger">There was an error Processing!</h1>';
 
             include 'includes/errormessage.php';
         }
