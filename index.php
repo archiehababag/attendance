@@ -11,7 +11,6 @@
 
     ?>
 
-
     <!--
         - First Name
         - Last Name
@@ -21,10 +20,9 @@
         - Contact Number
     -->
 
-
     <h1 class="text-center">Registration for IT Conference</h1>
 
-    <form method="post" action="success.php">
+    <form method="post" action="success.php"enctype="multipart/form-data">
         <div class="mb-3">
             <label for="firstname" class="form-label">First Name</label>
             <input required type="text" class="form-control" id="firstname" name="firstname">
@@ -59,23 +57,30 @@
             <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp">
             <div id="phoneHelp" class="form-text">We'll never share your number with anyone else.</div>
         </div>
-        <div class="input-group mb-3">
-            <label for="avatar">Upload Image (Optional)</label>
-            <input type="file" class="custom-file-input" id="avatar" name="avatar">
-            <label for="custom-file-label">Choose File</label>
+
+        <div class="mb-3">
+            <label class="form-label" for="avatar"></label>
+            <input type="file" accept="image/*" class="form-control" id="avatar" name="avatar">
         </div>
 
+        <!-- 
+        <div class="custom-file">
+            <input type="file" accept="image/*" class="custom-file-input" id="avatar" name="avatar" >
+            <label class="custom-file-label" for="avatar">Choose File</label>
+            <small id="avatar" class="form-text text-danger">File Upload is Optional</small>
 
+        </div> -->
+
+        <small id="avatar" class="form-text text-danger">File Upload is Optional</small>
+        <br />
+        <br />
         <div class="d-grid gap-2">
             <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
         </div>
     </form>
-
     <br />
     <br />
     <br />
     <br />
     <br />
-
-
     <?php require_once 'includes/footer.php'; ?>

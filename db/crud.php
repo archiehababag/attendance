@@ -13,11 +13,11 @@
             $this->db = $conn;
         }
         //function to insert a new record into the attendee database
-        public function insertAttendees($firstname, $lastname, $birthday, $email, $phone, $specialty)
+        public function insertAttendees($firstname, $lastname, $birthday, $email, $phone, $specialty, $avatar_path)
         {
             try {
                 // define sql statement to be executed  
-                $sql = "INSERT INTO attendee(firstname,lastname,birthday,emailAddress,contactNumber,specialty_id) VALUES(:firstname,:lastname,:birthday,:email,:phone,:specialty)";
+                $sql = "INSERT INTO attendee(firstname,lastname,birthday,emailAddress,contactNumber,specialty_id, avatar_path) VALUES(:firstname,:lastname,:birthday,:email,:phone,:specialty, :avatar_path)";
                 // prepare the sql statement for execution
                 $stmt = $this->db->prepare($sql);
 
@@ -27,7 +27,8 @@
                 $stmt->bindparam(':birthday', $birthday);
                 $stmt->bindparam(':email', $email);
                 $stmt->bindparam(':phone', $phone);
-                $stmt->bindparam('specialty', $specialty);
+                $stmt->bindparam(':specialty', $specialty);
+                $stmt->bindparam(':avatar_path', $avatar_path);
 
                 $stmt->execute();
                 return true;

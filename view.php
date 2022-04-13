@@ -15,10 +15,9 @@
     } else {
         $id = $_GET['id'];
         $result = $crud->getAttendeeDetails($id);
-
-
     ?>
 
+        <img src="<?php echo empty($result['avatar_path']) ? "uploads/blankProfile.jpg" : $result['avatar_path'] ; ?>" class="rounded-circle" style="width: 15%; height: 15%" />
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">
@@ -41,28 +40,15 @@
                     Contact No.: <?php echo $result['contactNumber'];
                                     ?>
                 </p>
-
-
-
             </div>
         </div>
-
-
-
         <br />
-
         <div>
             <a href="viewrecords.php" class="btn btn-info">Back to List</a>
             <a href="edit.php?id=<?php echo $result['attendee_id'] ?>" class="btn btn-warning">Edit</a>
             <a onclick="return confirm('Are you sure you want to delete this record?');" href="delete.php?id=<?php echo $r['attendee_id'] ?>" class="btn btn-danger">Delete</a>
         </div>
-
     <?php } ?>
-
-
-
-
-
     <br />
     <br />
     <br />

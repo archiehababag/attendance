@@ -1,5 +1,4 @@
     <?php
-
     $title = 'Success Page';
     require_once 'includes/header.php';
     require_once 'db/conn.php';
@@ -14,8 +13,14 @@
         $phone = $_POST['phone'];
         $specialty = $_POST['specialty'];
 
+        $orig_file = $_FILES["avatar"]["tmp_name"];
+        $ext = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
+        $target_dir = 'uploads/';
+        $destination = "$target_dir$phone.$ext";
+        move_uploaded_file($orig_file,$destination);
+
         //Call function to insert and track if successful or not
-        $isSuccess = $crud->insertAttendees($firstname, $lastname, $birthday, $email, $phone, $specialty);
+        $isSuccess = $crud->insertAttendees($firstname, $lastname, $birthday, $email, $phone, $specialty, $destination);
         $specialtyName = $crud->getSpecialtyById($specialty);
 
         if ($isSuccess) {
@@ -29,9 +34,7 @@
             include 'includes/errormessage.php';
         }
     }
-
     ?>
-
 
     <!-- <h1 class="text-center text-success">You Have Been Registered!</h1> -->
 
@@ -40,51 +43,41 @@
     <!-- <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">
-                <?php //echo $_GET['firstname'] . ' ' . $_GET['lastname']; 
-                ?>
+                <?php //echo $_GET['firstname'] . ' ' . $_GET['lastname'];  ?>
             </h5>
             <h6 class="card-subtitle mb-2 text-muted">
-                <?php //echo $_GET['specialty']; 
-                ?>
+                <?php //echo $_GET['specialty'];  ?>
             </h6>
             <p class="card-text">
-                Date of Birth: <?php //echo $_GET['birthday']; 
-                                ?>
+                Date of Birth: <?php //echo $_GET['birthday']; ?>
             </p>
             <p class="card-text">
-                Email Add: <?php //echo $_GET['email']; 
-                            ?>
+                Email Add: <?php //echo $_GET['email']; ?>
             </p>
             <p class="card-text">
-                Contact No.: <?php //echo $_GET['phone']; 
-                                ?>
+                Contact No.: <?php //echo $_GET['phone']; ?>
             </p>
-
         </div>
     </div> -->
 
+    <img src="<?php echo $destination; ?>" class="rounded-circle" style="width: 15%; height: 15%" />
 
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">
-                <?php echo $_POST['firstname'] . ' ' . $_POST['lastname'];
-                ?>
+                <?php echo $_POST['firstname'] . ' ' . $_POST['lastname']; ?>
             </h5>
             <h6 class="card-subtitle mb-2 text-muted">
-                <?php echo $specialtyName['name'];
-                ?>
+                <?php echo $specialtyName['name']; ?>
             </h6>
             <p class="card-text">
-                Date of Birth: <?php echo $_POST['birthday'];
-                                ?>
+                Date of Birth: <?php echo $_POST['birthday']; ?>
             </p>
             <p class="card-text">
-                Email Add: <?php echo $_POST['email'];
-                            ?>
+                Email Add: <?php echo $_POST['email']; ?>
             </p>
             <p class="card-text">
-                Contact No.: <?php echo $_POST['phone'];
-                                ?>
+                Contact No.: <?php echo $_POST['phone']; ?>
             </p>
 
         </div>
