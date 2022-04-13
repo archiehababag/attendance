@@ -2,18 +2,18 @@
     <?php
 
     // Development Conection
-    $host = '127.0.0.1';
-    $db = 'attendance_db';
-    $user = 'root';
-    $pass = '';
-    $charset = 'utf8mb4';
+    // $host = '127.0.0.1';
+    // $db = 'attendance_db';
+    // $user = 'root';
+    // $pass = '';
+    // $charset = 'utf8mb4';
 
     //Remote Connection
-    // $host = 'remotemysql.com';
-    // $db = 'akbLUbd0m9';
-    // $user = 'akbLUbd0m9';
-    // $pass = '9TyIaE5gyH';
-    // $charset = 'utf8mb4';
+    $host = 'remotemysql.com';
+    $db = 'akbLUbd0m9';
+    $user = 'akbLUbd0m9';
+    $pass = '9TyIaE5gyH';
+    $charset = 'utf8mb4';
 
 
     $dsn = "mysql:host=$host;dbname=$db;charset=$charset;";
